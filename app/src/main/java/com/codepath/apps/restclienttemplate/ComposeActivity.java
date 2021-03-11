@@ -46,9 +46,11 @@ public class ComposeActivity extends AppCompatActivity {
                 String tweetContent = etCompose.getText().toString();
                 if (tweetContent.isEmpty()) {
                     Toast.makeText(ComposeActivity.this, "Sorry, your tweet cannot be empty!", Toast.LENGTH_LONG).show();
+                    return;
                 }
-                if (tweetContent.length() > 140) {
-                    Toast.makeText(ComposeActivity.this, "Sorry, your tweet cannot be empty!", Toast.LENGTH_LONG).show();
+                if (tweetContent.length() > 280) {
+                    Toast.makeText(ComposeActivity.this, "Sorry, your tweet is too long!", Toast.LENGTH_LONG).show();
+                    return;
                 }
                 //Make API Call to Twitter to publish tweet
                 client.publishTweet(tweetContent, new JsonHttpResponseHandler() {
